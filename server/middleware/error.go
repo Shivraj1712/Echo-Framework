@@ -13,8 +13,6 @@ func ErrorHandler(c *echo.Context, err error) error {
 	if Err, ok := err.(*echo.HTTPError); ok {
 		code = Err.StatusCode()
 		message = Err.Message
-	} else {
-		message = err.Error()
 	}
 	return response.FailureResponse(c, message, code)
 }
