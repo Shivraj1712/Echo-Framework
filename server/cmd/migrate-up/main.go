@@ -9,7 +9,7 @@ import (
 	"github.com/golang-migrate/migrate/v4"
 )
 
-func MigrateUp() {
+func main() {
 	cfg, err := config.FetchConfig()
 	if err != nil {
 		slog.Error("failed to load environment variables", "error", err)
@@ -20,7 +20,7 @@ func MigrateUp() {
 	if err != nil {
 		slog.Error("failed to migrate", "error", err)
 	}
-	if err := mig.Up(); err != nil && errors.Is(err, migrate.ErrNoChange) {
+	if err := mig.Up(); err != nil && !errors.Is(err, migrate.ErrNoChange) {
 		slog.Error("failed to migrate", "error", err)
 		os.Exit(1)
 	}

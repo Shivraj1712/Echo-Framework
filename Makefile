@@ -6,4 +6,4 @@ tidy:
 migrate-up:
 	cd server && go run ./cmd/migrate-up/main.go
 migrate-down:
-	cd server && go run ./cmd/migration-down/main.go
+	cd server && go run ./cmd/migrate-down/main.go
